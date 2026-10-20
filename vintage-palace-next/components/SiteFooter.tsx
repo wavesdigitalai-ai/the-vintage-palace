@@ -1,89 +1,135 @@
 import Link from "next/link";
-import { NAV, PROFILES, SITE } from "@/lib/venue";
-import { OrchLogo } from "./OrchLogo";
+import { NAV, SITE } from "@/lib/venue";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-night pt-16 pb-8 text-ivory/70">
-      <div className="mx-auto w-[min(1180px,100%-2.5rem)]">
-        <div className="grid gap-10 border-b border-ivory/15 pb-10 md:grid-cols-[1.6fr_1fr_1fr_1.2fr]">
-          <div>
-            <Link href="/" className="mb-5 flex items-center gap-3 no-underline">
-              <OrchLogo className="h-10 w-10" dark={false} />
-              <span className="h-display text-2xl text-ivory">
-                The Vintage Palace
-                <small className="block font-body text-[0.58rem] font-medium uppercase tracking-[0.42em] text-gold-brt">
-                  Karwan · Hyderabad
-                </small>
-              </span>
-            </Link>
-            <p className="max-w-sm text-sm leading-relaxed">
-              A Golconda Road landmark for grand celebrations — weddings, receptions, nikaahs, sangeets, birthdays and
-              corporate occasions.
+    <footer className="site-foot">
+      <div className="wrap">
+        <div className="foot-grid">
+          <div className="foot-brand">
+            <span className="brand-name">The Vintage Palace</span>
+            <span className="brand-sub">Karwan · Hyderabad</span>
+            <p>
+              A palace-style banquet venue on Golconda Road — two marquee spaces, an in-house caterer and decorator, and
+              five rooms for the families.
             </p>
           </div>
-
-          <nav aria-label="Footer — pages">
-            <h4 className="mb-5 text-[1.02rem] font-semibold uppercase tracking-[0.22em] text-ivory">Pages</h4>
-            <ul className="grid gap-2.5">
-              {NAV.filter((n) => n.href !== "/").map((n) => (
+          <div className="foot-col">
+            <h4>Site</h4>
+            <ul>
+              {NAV.map((n) => (
                 <li key={n.href}>
-                  <Link href={n.href} className="text-sm no-underline transition-all duration-300 hover:translate-x-1 hover:text-gold-brt">
-                    {n.label}
-                  </Link>
+                  <Link href={n.href}>{n.label}</Link>
                 </li>
               ))}
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
             </ul>
-          </nav>
-
-          <nav aria-label="Footer — occasions">
-            <h4 className="mb-5 text-[1.02rem] font-semibold uppercase tracking-[0.22em] text-ivory">Occasions</h4>
-            <ul className="grid gap-2.5">
-              {["Weddings", "Receptions", "Sangeet & Mehendi", "Nikaah Programmes", "Corporate Events"].map((o) => (
-                <li key={o}>
-                  <Link href="/experiences" className="text-sm no-underline transition-all duration-300 hover:translate-x-1 hover:text-gold-brt">
-                    {o}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div>
-            <h4 className="mb-5 text-[1.02rem] font-semibold uppercase tracking-[0.22em] text-ivory">Find us on</h4>
-            <div className="flex flex-wrap gap-2">
-              {PROFILES.map((p) => (
-                <a
-                  key={p.name}
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full border border-ivory/20 px-3 py-1.5 text-[0.76rem] uppercase tracking-[0.1em] no-underline transition-colors hover:border-gold-brt hover:text-gold-brt"
-                >
-                  {p.name}
+          </div>
+          <div className="foot-col">
+            <h4>Find us on</h4>
+            <ul>
+              <li>
+                <a href="https://www.wedmegood.com/wedding-venues/The-Vintage-Palace-999842" target="_blank" rel="noopener">
+                  WedMeGood · 4.8★
                 </a>
-              ))}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed">
-              <b className="text-ivory">{SITE.address.line1}</b>, {SITE.address.line2}, {SITE.address.city} —{" "}
-              {SITE.address.pin}
+              </li>
+              <li>
+                <a href="https://weddingz.in/hyderabad/the-vintage-palace-karwan/" target="_blank" rel="noopener">
+                  Weddingz
+                </a>
+              </li>
+              <li>
+                <a href="https://banquethub.in/venue/the-vintage-palace" target="_blank" rel="noopener">
+                  BanquetHub
+                </a>
+              </li>
+              <li>
+                <a href="https://hyderabad.wedding.net/venues/436745" target="_blank" rel="noopener">
+                  Wedding.net
+                </a>
+              </li>
+              <li>
+                <a href="https://the-vintage-palace.wheree.com/" target="_blank" rel="noopener">
+                  Wheree
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.google.com/maps/search/The+Vintage+Palace+Golconda+Road+Karwan+Hyderabad"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Google Maps
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="foot-col">
+            <h4>Visit &amp; call</h4>
+            <address>
+              {SITE.address.line1},<br />
+              {SITE.address.line2},<br />
+              {SITE.address.city} {SITE.address.pin}
+            </address>
+            <p style={{ margin: "1rem 0 0" }}>
+              <a className="foot-tel" href={`tel:${SITE.phoneDial}`}>
+                {SITE.phone}
+              </a>
             </p>
-            <a href={`tel:${SITE.phoneDial}`} className="text-gold-brt no-underline">
-              {SITE.phone}
-            </a>
+            <p style={{ margin: "0.5rem 0 0", fontSize: "0.8rem", letterSpacing: "0.08em" }}>
+              Site visits daily · 11 am – 10 pm
+            </p>
           </div>
         </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-4 pt-6 text-sm">
-          <span>© {new Date().getFullYear()} The Vintage Palace. All rights reserved.</span>
+        <div className="foot-base">
+          <span>© 2026 The Vintage Palace · Karwan, Hyderabad</span>
           <span>
-            Crafted with care ·{" "}
-            <a href="https://mishsystems.in" target="_blank" rel="noopener noreferrer" className="text-gold-brt">
-              Mish Systems
-            </a>
+            Photos &amp; facts sourced from the venue&apos;s official albums on{" "}
+            <a href="https://weddingz.in/hyderabad/the-vintage-palace-karwan/" target="_blank" rel="noopener">
+              Weddingz
+            </a>{" "}
+            &amp;{" "}
+            <a href="https://www.wedmegood.com/wedding-venues/The-Vintage-Palace-999842" target="_blank" rel="noopener">
+              WedMeGood
+            </a>{" "}
+            · <Link href="/sitemap.xml">Sitemap</Link>
           </span>
         </div>
       </div>
     </footer>
+  );
+}
+
+export function CtaDark({ title, sub }: { title: React.ReactNode; sub: string }) {
+  return (
+    <section className="sec sec--dark cta-dark" aria-labelledby="cta">
+      <div className="wrap">
+        <div className="rv">
+          <h2 id="cta" className="h2">
+            {title}
+          </h2>
+          <p className="muted" style={{ marginTop: "1rem" }}>
+            {sub}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CtaActions({ primary, secondary }: { primary: { href: string; label: string }; secondary: { href: string; label: string } }) {
+  return (
+    <div className="hero-cta" style={{ justifyContent: "center", animation: "none", opacity: 1 }}>
+      <a className="btn btn--brass" href={primary.href}>
+        <span>{primary.label}</span>
+        <span className="arr">→</span>
+      </a>
+      <a className="btn btn--paper" href={secondary.href}>
+        <span>{secondary.label}</span>
+        <span className="arr">→</span>
+      </a>
+    </div>
   );
 }

@@ -1,176 +1,194 @@
 /* ============================================================
-   The Vintage Palace — interactions
-   Vanilla JS. No dependencies. Smooth, reduced-motion aware.
+   THE VINTAGE PALACE — motion engine
+   Reveal-on-scroll · parallax · counters · header · gallery
    ============================================================ */
-(() => {
+(function () {
   "use strict";
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const $  = (s, c = document) => c.querySelector(s);
-  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-  /* ---------- Header state + progress ---------- */
-  const head = $(".site-head");
-  const progress = $(".progress-bar");
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      head && head.classList.toggle("is-scrolled", y > 40);
-      if (progress) {
-        const h = document.documentElement.scrollHeight - innerHeight;
-        progress.style.transform = `scaleX(${h > 0 ? Math.min(y / h, 1) : 0})`;
-      }
-      parallaxTick(y);
-      ticking = false;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- header: scrolled state + progress bar ---------- */
+  const head = document.querySelector(".site-head");
+  const progress = document.querySelector(".progress");
+  let lastY = 0;
+
+  function onScroll() {
+    const y = window.scrollY;
+    if (head) head.classList.toggle("scrolled", y > 30);
+    if (progress) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = "scaleX(" + (h > 0 ? y / h : 0) + ")";
+    }
+    lastY = y;
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- mobile drawer ---------- */
+  const burger = document.querySelector(".burger");
+  if (burger && head) {
+    burger.addEventListener("click", () => {
+      const open = head.classList.toggle("menu-open");
+      burger.setAttribute("aria-expanded", String(open));
+      document.documentElement.style.overflow = open ? "hidden" : "";
     });
-  };
-  addEventListener("scroll", onScroll, { passive: true });
+    // mark drawer links with staggered index
+    document.querySelectorAll(".drawer a").forEach((a, i) => a.style.setProperty("--i", i));
+  }
 
-  /* ---------- Parallax hero ---------- */
-  const parallaxImgs = $$(".hero-media img, .parallax-soft img");
-  const parallaxTick = (y) => {
-    if (prefersReduced || !parallaxImgs.length) return;
-    parallaxImgs.forEach((img) => {
-      const host = img.getBoundingClientRect();
-      if (host.bottom < 0 || host.top > innerHeight) return;
-      const speed = img.dataset.speed ? parseFloat(img.dataset.speed) : 0.12;
-      img.style.setProperty("--parallax", `${Math.round(y * speed)}px`);
-    });
-  };
-
-  /* ---------- Split words (hero headline) ---------- */
-  $$(".split").forEach((el) => {
+  /* ---------- split headings into masked lines ---------- */
+  document.querySelectorAll("[data-lines]").forEach((el) => {
     const words = el.textContent.trim().split(/\s+/);
-    el.innerHTML = words.map((w, i) => `<span style="--wd:${(0.08 + i * 0.07).toFixed(2)}s">${w}</span>`).join(" ");
-    el.setAttribute("aria-label", words.join(" "));
+    const perLine = Math.max(2, Math.ceil(words.length / Math.min(3, Math.ceil(words.length / 4))));
+    const lines = [];
+    for (let i = 0; i < words.length; i += perLine) lines.push(words.slice(i, i + perLine).join(" "));
+    el.innerHTML = lines
+      .map((l, i) => '<span class="line"><i style="--l:' + i + '">' + l + "</i></span>")
+      .join("");
   });
 
-  /* ---------- Reveal on scroll ---------- */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add("is-in");
-      io.unobserve(e.target);
-    });
-  }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+  /* ---------- reveal on scroll ---------- */
+  const rvEls = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) {
+    rvEls.forEach((el) => el.classList.add("on"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -7% 0px" }
+    );
+    rvEls.forEach((el) => io.observe(el));
+  }
 
-  const observeReveals = () => {
-    $$(".reveal, [data-clip], .split").forEach((el) => io.observe(el));
-    $$("[data-count]").forEach((el) => io.observe(el));
-    $$(".rbar i").forEach((el) => io.observe(el));
-  };
-
-  /* ---------- Counters ---------- */
-  const runCount = (el) => {
-    const end = parseFloat(el.dataset.count);
-    const suffix = el.dataset.suffix || "";
-    if (prefersReduced) { el.textContent = end.toLocaleString("en-IN") + suffix; return; }
-    const dur = 1700, t0 = performance.now();
-    const step = (t) => {
-      const p = Math.min((t - t0) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 4);
-      el.textContent = Math.round(end * eased).toLocaleString("en-IN") + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
-  /* ---------- Rating bars ---------- */
-  const setBar = (el) => { el.style.setProperty("--w", el.dataset.w || "0%"); };
-
-  /* ---------- Mobile drawer ---------- */
-  const burger = $(".burger");
-  burger && burger.addEventListener("click", () => {
-    const open = document.body.classList.toggle("menu-open");
-    burger.setAttribute("aria-expanded", String(open));
-    document.documentElement.style.overflow = open ? "hidden" : "";
-  });
-  $$(".drawer a, .drawer .drawer-foot a").forEach((a) =>
-    a.addEventListener("click", () => {
-      document.body.classList.remove("menu-open");
-      burger && burger.setAttribute("aria-expanded", "false");
-      document.documentElement.style.overflow = "";
-    }));
-
-  /* ---------- Gallery filters ---------- */
-  const chips = $$(".chip[data-filter]");
-  chips.forEach((chip) => chip.addEventListener("click", () => {
-    chips.forEach((c) => c.classList.toggle("is-active", c === chip));
-    const f = chip.dataset.filter;
-    $$(".gal-item").forEach((item) => {
-      const show = f === "all" || item.dataset.cat === f;
-      item.classList.toggle("is-hidden", !show);
-      if (show && !prefersReduced) item.animate(
-        [{ opacity: 0, transform: "translateY(14px)" }, { opacity: 1, transform: "none" }],
-        { duration: 420, easing: "cubic-bezier(.22,1,.36,1)" });
-    });
+  /* ---------- parallax (hero + framed media) ---------- */
+  const pxEls = [...document.querySelectorAll("[data-parallax]")].map((el) => ({
+    el,
+    speed: parseFloat(el.dataset.parallax) || 0.14,
   }));
 
-  /* ---------- Lightbox ---------- */
-  const lb = $(".lightbox");
-  if (lb) {
-    const lbImg = $(".lightbox img"), lbCap = $(".lightbox figcaption");
-    let srcSet = [], idx = 0;
-    const collect = () => {
-      srcSet = $$(".gal-item:not(.is-hidden)").map((g) => ({
-        el: g,
-        src: g.getAttribute("data-src") || (g.querySelector("img") ? g.querySelector("img").src : ""),
-        cap: g.dataset.cap || ""
-      }));
+  function parallax() {
+    if (reduce) return;
+    const vh = window.innerHeight;
+    pxEls.forEach(({ el, speed }) => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const mid = (r.top + r.height / 2 - vh / 2) / vh;
+      el.style.transform = "translate3d(0," + (mid * speed * 100).toFixed(2) + "%,0)";
+    });
+    requestAnimationFrame(() => {}); // keep rAF warm for smoother frames
+  }
+
+  if (pxEls.length) {
+    let ticking = false;
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            parallax();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+    parallax();
+  }
+
+  /* ---------- counters ---------- */
+  const counters = document.querySelectorAll("[data-count]");
+  if (counters.length) {
+    const fmt = (n) => n.toLocaleString("en-IN");
+    const run = (el) => {
+      const to = parseInt(el.dataset.count, 10) || 0;
+      if (reduce) { el.textContent = fmt(to) + (el.dataset.suffix || ""); return; }
+      const t0 = performance.now();
+      const dur = 1700;
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = fmt(Math.round(to * eased)) + (el.dataset.suffix || "");
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     };
-    const show = (i) => {
-      idx = (i + srcSet.length) % srcSet.length;
-      const it = srcSet[idx];
-      if (it && it.src) { lbImg.src = it.src; lbImg.style.display = ""; }
-      else { lbImg.removeAttribute("src"); lbImg.style.display = "none"; }
-      lbCap.textContent = it ? it.cap : "";
+    const cio = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { run(e.target); cio.unobserve(e.target); }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    counters.forEach((el) => cio.observe(el));
+  }
+
+  /* ---------- gallery filter + lightbox ---------- */
+  const grid = document.querySelector(".gal-grid");
+  if (grid) {
+    const chips = document.querySelectorAll(".chip");
+    const items = [...grid.querySelectorAll(".gal-item")];
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+        const f = chip.dataset.filter;
+        items.forEach((it) => {
+          const show = f === "all" || it.dataset.cat === f;
+          it.classList.toggle("hide", !show);
+          if (show) {
+            it.style.animation = "none";
+            void it.offsetWidth;
+            it.style.animation = "fadeUp .55s cubic-bezier(.19,1,.22,1) both";
+          }
+        });
+      });
+    });
+
+    const lb = document.querySelector(".lightbox");
+    const lbImg = lb.querySelector("img");
+    const lbCap = lb.querySelector("figcaption");
+    let current = 0;
+    let visible = () => items.filter((it) => !it.classList.contains("hide"));
+
+    function openLb(idx) {
+      const list = visible();
+      current = (idx + list.length) % list.length;
+      const item = list[current];
+      const img = item.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = item.dataset.cap || "";
       lb.classList.add("open");
       document.documentElement.style.overflow = "hidden";
-    };
-    $$(".gal-item").forEach((g) => g.addEventListener("click", () => {
-      collect();
-      const pos = srcSet.findIndex((x) => x.el === g);
-      show(pos >= 0 ? pos : 0);
-    }));
-    const close = () => { lb.classList.remove("open"); document.documentElement.style.overflow = ""; };
-    $(".lightbox .lb-close") && $(".lightbox .lb-close").addEventListener("click", close);
-    lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
-    addEventListener("keydown", (e) => {
+    }
+    function closeLb() {
+      lb.classList.remove("open");
+      document.documentElement.style.overflow = "";
+    }
+
+    items.forEach((it, i) => {
+      it.addEventListener("click", () => openLb(items.indexOf(it)));
+    });
+    lb.querySelector(".lb-close").addEventListener("click", closeLb);
+    lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+    lb.querySelector(".lb-prev").addEventListener("click", () => openLb(current - 1));
+    lb.querySelector(".lb-next").addEventListener("click", () => openLb(current + 1));
+    document.addEventListener("keydown", (e) => {
       if (!lb.classList.contains("open")) return;
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowRight") show(idx + 1);
-      if (e.key === "ArrowLeft") show(idx - 1);
-    });
-    $(".lb-prev") && $(".lb-prev").addEventListener("click", () => show(idx - 1));
-    $(".lb-next") && $(".lb-next").addEventListener("click", () => show(idx + 1));
-  }
-
-  /* ---------- Enquiry form → WhatsApp ---------- */
-  const WHATSAPP = "919160374743";
-  const form = $(".form[data-form=enquiry]");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const d = new FormData(form);
-      const msg =
-        `*The Vintage Palace — Enquiry*%0A` +
-        `Name: ${d.get("name")}%0APhone: ${d.get("phone")}%0A` +
-        `Event: ${d.get("type")}%0AGuests: ${d.get("guests")}%0ADate: ${d.get("date") || "flexible"}%0A` +
-        `Message: ${d.get("msg") || "—"}`;
-      const ok = $(".form-ok");
-      ok && ok.classList.add("show");
-      form.reset();
-      setTimeout(() => window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank", "noopener"), 500);
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowRight") openLb(current + 1);
+      if (e.key === "ArrowLeft") openLb(current - 1);
     });
   }
 
-  /* ---------- Footer year ---------- */
-  const yr = $(".js-year");
-  yr && (yr.textContent = new Date().getFullYear());
-
-  /* ---------- Kick off ---------- */
-  onScroll();
-  observeReveals();
+  /* ---------- footer year ---------- */
+  const year = document.querySelector("#year");
+  if (year) year.textContent = new Date().getFullYear();
 })();

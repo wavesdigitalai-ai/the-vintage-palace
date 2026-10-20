@@ -2,12 +2,19 @@
 
 Website system for "The Vintage Palace" wedding venue (Pillar No. 102, Golconda
 Road, Karwan, Hyderabad 500006), maintained as **two twins with identical
-content**:
+content and an identical editorial design** (Cormorant Garamond + Manrope,
+paper/ink/brass palette, scroll-reveal motion; enquiry is phone + site visit
+only — no WhatsApp anywhere):
 
 | Folder | Stack | Where to publish |
 |---|---|---|
 | `vintage-palace-html/` | Static HTML + CSS + vanilla JS | **GitHub Pages (live via this repo's workflow)** |
-| `vintage-palace-next/` | Next.js 16 / React 19 / Tailwind v4 / framer-motion | **Vercel (planned — client sign-off pending)** |
+| `vintage-palace-next/` | Next.js 16 / React 19 / Tailwind v4 | **Vercel (planned — client sign-off pending)** |
+
+Every fact on the site is verified against the venue's public listings
+(Weddingz, WedMeGood, Wedding.net, BanquetHub, Justdial, Wheree) and sourced
+reviews are quoted verbatim; the pricing page shows verified numbers only and
+marks seasonal rental "on request".
 
 ## GitHub Pages (live)
 The included workflow (`.github/workflows/deploy-pages.yml`) publishes the

@@ -4,9 +4,6 @@ export const SITE = {
   url: "https://thevintagepalace.in",
   phone: "+91 91603 74743",
   phoneDial: "+919160374743",
-  phoneAlt: "+91 80481 25640",
-  phoneDialAlt: "+918048125640",
-  whatsapp: "919160374743",
   address: {
     line1: "Pillar No. 102, Golconda Road",
     line2: "beside Mahaboob Pride Function Hall, Karwan West",
@@ -15,201 +12,241 @@ export const SITE = {
     pin: "500006",
     country: "IN",
   },
-  geo: { lat: 17.3760139, lng: 78.4342205 },
-  hours: "Site visits daily · 11:00 AM – 10:00 PM",
-  slot: "Event slots from 10:00 AM; overnight programmes till ~6 AM",
+  geo: { lat: 17.375808, lng: 78.434052 },
+  hours: "Site visits daily · 11 am – 10 pm",
+  slot: "Booking slots from 10 am · overnight weddings permitted",
 } as const;
-
-export const WHATSAPP_TEXT =
-  "Hi! I'd like to enquire about The Vintage Palace for my event.";
-export const waLink = (text: string = WHATSAPP_TEXT) =>
-  `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export const NAV = [
   { href: "/", label: "Home" },
   { href: "/venue", label: "The Venue" },
-  { href: "/experiences", label: "Experiences" },
+  { href: "/experiences", label: "Occasions" },
   { href: "/gallery", label: "Gallery" },
   { href: "/reviews", label: "Reviews" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
 export const PROFILES = [
-  { name: "Google Maps", href: "https://www.google.com/maps/search/The+Vintage+Palace+Golconda+Road+Karwan+Hyderabad", note: "4.3★ · 39 reviews · the fastest way to see us on the map.", num: "G" },
-  { name: "WedMeGood", href: "https://www.wedmegood.com/wedding-venues/The-Vintage-Palace-999842", note: "4.8★ from wedding couples. Full portfolio and guest reviews.", num: "W1" },
-  { name: "Weddingz", href: "https://weddingz.in/hyderabad/the-vintage-palace-karwan", note: "Full specification sheet — capacities, policies, parking.", num: "W2" },
-  { name: "Wedding.net", href: "https://hyderabad.wedding.net/venues/436745", note: "Detailed venue policies — slots, advance, room rules.", num: "N" },
-  { name: "BanquetHub", href: "https://banquethub.in/venue/the-vintage-palace", note: "4.3★ with logistics scores and listing data.", num: "B" },
-  { name: "Justdial", href: "https://www.justdial.com/Hyderabad/The-Vintage-Palace-Pillar-No102-Karwan/040PXX40-XX40-160820110934-W3X7_BZDET", note: "“Serving the community for many years as a leading banquet hall.”", num: "J" },
-  { name: "WeddingWire", href: "https://www.weddingwire.in/banquet-halls/the-vintage-palace--e92296", note: "International directory profile and couple reviews.", num: "W3" },
-  { name: "Wheree", href: "https://the-vintage-palace.wheree.com/", note: "4.4★ aggregate review summary and event-space category.", num: "E" },
-  { name: "VenueMonk", href: "https://www.venuemonk.com/venues/hyderabad/the-vintage-palace-karwan", note: "Karwan listing with visiting-hour suggestions.", num: "V" },
+  { name: "Google Maps", href: "https://www.google.com/maps/search/The+Vintage+Palace+Golconda+Road+Karwan+Hyderabad", note: "4.3★ · 39 reviews · the fastest way to see us on the map." },
+  { name: "WedMeGood", href: "https://www.wedmegood.com/wedding-venues/The-Vintage-Palace-999842", note: "4.8★ from wedding couples · full portfolio and the three published reviews." },
+  { name: "Weddingz", href: "https://weddingz.in/hyderabad/the-vintage-palace-karwan/", note: "Full specification sheet — capacities, policies, parking, plate prices." },
+  { name: "Wedding.net", href: "https://hyderabad.wedding.net/venues/436745", note: "Detailed venue policies — slots, advance, rooms." },
+  { name: "BanquetHub", href: "https://banquethub.in/venue/the-vintage-palace", note: "Logistics scores — 9.2/10 reliability, 9.0 service, 8.5 customer care." },
+  { name: "WeddingWire", href: "https://www.weddingwire.in/banquet-halls/the-vintage-palace--e92296", note: "International directory profile." },
+  { name: "Justdial", href: "https://www.justdial.com/Hyderabad/The-Vintage-Palace-Pillar-No102-Karwan/040PXX40-XX40-160820110934-W3X7_BZDET", note: "\"Serving the community for many years as a leading banquet hall.\"" },
+  { name: "Wheree", href: "https://the-vintage-palace.wheree.com/", note: "4.4★ aggregate review summary and event-space category." },
+  { name: "VenueMonk", href: "https://www.venuemonk.com/venues/hyderabad/the-vintage-palace-karwan", note: "Karwan listing with visiting-hour suggestions." },
 ] as const;
 
 export const STATS = [
-  { value: 3000, suffix: "", label: "Guest capacity" },
-  { value: 700, suffix: "", label: "Seated in the hall" },
-  { value: 1500, suffix: "", label: "Floating on the lawn" },
-  { value: 110, suffix: "+", label: "Parking spaces" },
+  { value: 400, label: "Hall, seated" },
+  { value: 700, label: "Hall, floating" },
+  { value: 950, label: "Garden, seated" },
+  { value: 110, label: "Parking spaces" },
 ] as const;
 
-export const PH = {
-  chandelier: "ph ph--chandelier",
-  lawn: "ph ph--lawn",
-  foyer: "ph",
-  lights: "ph ph--lights",
+export const IMG = {
+  "venue-hero": "/images/venue-hero.jpg",
+  "reception-floor": "/images/reception-floor.jpg",
+  "stage-violet": "/images/stage-violet.jpg",
+  "hall-theatre": "/images/hall-theatre.jpg",
+  "hall-day": "/images/hall-day.jpg",
+  "mandap-seats": "/images/mandap-seats.jpg",
+  "dining-night": "/images/dining-night.jpg",
+  "dining-halls": "/images/dining-halls.jpg",
+  "gold-arches": "/images/gold-arches.jpg",
+  "lawn-floodlit": "/images/lawn-floodlit.jpg",
 } as const;
 
-export type Ph = keyof typeof PH;
+export type ImgKey = keyof typeof IMG;
 
-export const SPACES = [
+export const CHAPTERS = [
   {
-    id: "hall",
-    name: "The Palace Hall",
-    tag: "Indoor · Fully air-conditioned",
-    kind: "chandelier" as Ph,
-    desc: "Crystal chandeliers over a polished floor, a raised stage for stage-tableaus and milestones, and cool comfort that holds from a 10 AM muhurat to a 2 AM vidaai.",
-    quote: "Guest reviews single the interiors out again and again — “amazing interiors and nice ambience.” Eighteen event types are hosted here, from ring ceremonies to farewell proms.",
-    amenities: ["Full air-conditioning", "Raised stage with mic + projector points", "TV screens for milestone reels", "Power backup with generator support", "Muhurat-friendly morning slots", "Accommodates multi-day functions"],
-    seated: "400",
-    floating: "700",
-    flip: false,
+    num: "01 · The banquet hall",
+    title: ["Gold arches, high ceiling, ", "one tall stage"],
+    img: "hall-day" as ImgKey,
+    caption: "The hall in daylight — family seating for the rites",
+    lead: "The hall seats up to 400 guests in ritual-facing rows and holds 700 across the floor. Ornate gold-on-ivory arches wrap the walls; the stage is raised so elders and cameras both find sight-lines.",
+    checks: ["Stage, projector and TV screens included", "Well-ventilated interiors — cooling arrangements on request", "Suitable from morning muhurats to late-evening receptions"],
   },
   {
-    id: "lawn",
-    name: "The Royal Lawn",
-    tag: "Outdoor · Open-air",
-    kind: "lawn" as Ph,
-    desc: "A wide green canvas for mandaps, jaan entrances, live baraat with the dhol, and receptions that breathe under the open sky.",
-    quote: "The lawn is where the palace shows its range — daytime haldi, golden-hour nikaah photographs, night-time sangeet drones. The in-house decorating panel turns it around for any theme inside hours.",
-    amenities: ["Mandap & stage setups included in packages", "Hawan and baarat both welcomed", "Overnight weddings permitted (event till ~6 AM)", "Marigold, floral, and royal theme panels", "Separate dining annex keeps the floor clear", "Easy guest flow from ribbon-gate to stage"],
-    seated: "950",
-    floating: "1,500",
-    flip: true,
+    num: "02 · The mandap",
+    title: ["Carved white ", "columns", ", red florals"],
+    img: "mandap-seats" as ImgKey,
+    caption: "The carved mandap, dressed for the rites",
+    lead: "The venue's own decorator builds a mandap from carved white columns and red floral arches — hawan is warmly permitted, and baarat entrances are welcome. Prefer your own decorator? Outside panels are allowed.",
+    checks: ["In-house decorator with outside panels permitted", "Hawan and multi-ritual layouts welcomed", "Dress-up themes from marigold to minimal gold"],
+  },
+  {
+    num: "03 · The dining hall",
+    title: ["A service that ", "never queues"],
+    img: "dining-night" as ImgKey,
+    caption: "Dinner dressed in wine & gold",
+    lead: "An independent dining hall keeps dinner flowing while hosts meet guests at the stage. Tables arrive dressed — wine covers, gold sashes, and the in-house kitchen's spread before guests walk in.",
+    checks: ["Menu from ₹400 a plate (veg) · ₹500 (non-veg)", "Outside caterers permitted, subject to the briefing", "Jain & special-diet requests welcomed"],
+  },
+  {
+    num: "04 · The floodlit garden",
+    title: ["An open-air ", "stage", " under the arches"],
+    img: "lawn-floodlit" as ImgKey,
+    caption: "The floodlit garden, after dark",
+    lead: "The garden seats 950 and floats 1,500. Palms and potted green frame the lawn; a lit rose-window arch makes the evening look royal from every angle.",
+    checks: ["Baraat entrances, jaan processions — all welcomed", "Overnight weddings permitted", "Drone shots coordinated at booking"],
   },
 ] as const;
 
-export const SUPPORT_SPACES = [
-  { title: "Bridal & Changing Suites", body: "Two complimentary, fully air-conditioned rooms with attached bathrooms for the couple and close family — ready from morning prep through the last outfit change. Additional guest rooms available on the premises." },
-  { title: "Separate Dining Annex", body: "An independent dining wing — repeatedly named in reviews — so dinner queues never cross the greeting line, and the hall stays dressed and camera-perfect." },
-  { title: "Parking & Arrival", body: "On-premises parking for 100–110 cars on the main Golconda Road corridor, with transport access guests call “easy.” Off-peak street support for peak-season overflow." },
+export const FACTS = [
+  { k: "Address", v: "Pillar No. 102, Golconda Road, beside Mahaboob Pride Function Hall, Karwan West, Hyderabad, Telangana 500006" },
+  { k: "Spaces", v: "Banquet hall (400 seated · 700 floating) · floodlit garden (950 seated · 1,500 floating) · dining hall" },
+  { k: "Phone", v: "+91 91603 74743 — site visits daily, 11 am – 10 pm" },
+  { k: "Parking", v: "On-premises parking for 110 vehicles (no valet)" },
+  { k: "Rooms", v: "Five rooms on premises (average ₹1,000/night) · changing rooms available (non-AC)" },
+  { k: "Food", v: "Venue kitchen, veg ₹400 / non-veg ₹500 per plate · outside caterers permitted" },
+  { k: "Decor", v: "In-house decorator · outside decorators permitted" },
+  { k: "Occasions", v: "Weddings, receptions, sangeet, nikaah, engagements, birthdays, corporate events" },
 ] as const;
 
-export const CAPACITIES = [
-  { space: "The Palace Hall", ioo: "Indoor · AC", seated: "400", floating: "700", notes: "Chandeliers, stage, projector, TV screens" },
-  { space: "The Royal Lawn", ioo: "Outdoor", seated: "950", floating: "1,500", notes: "Open-air, mandap, baraat entrance, hawan-ready" },
-  { space: "Dining Annex", ioo: "Indoor", seated: "—", floating: "—", notes: "Independent service flow, kitchen coordination" },
-  { space: "Bridal Suites", ioo: "Indoor · AC", seated: "—", floating: "—", notes: "2 complimentary + guest rooms on campus" },
+export const OCCASIONS = [
+  { title: "The wedding", body: "Hall rituals, garden mehfils, a decorated mandap with hawan — and an overnight option for the weddings that want to run late." },
+  { title: "The reception", body: "A party scrupulously punctuated by chandelier discs — greeting lines flow from the stage, the party line gets its spotlights." },
+  { title: "Sangeet & DJ night", body: "Bring your own DJ with a music licence — the hall was built to be danced in. Music wraps before the neighbourhood's late-night hush." },
+  { title: "Haldi & mehendi", body: "Morning slots on the floodlit garden — marigold canopies, dupatta lines and room to let the colour spill." },
+  { title: "Engagement & ring ceremony", body: "Intimate seating around a dressed stage in the 200–400 range, with soft daylight across the gold arches." },
+  { title: "Nikaah programme", body: "Mehfil seating, halal-catering coordination with the venue kitchen, and quiet rooms for the elders' sessions." },
+  { title: "Birthday & naming", body: "Cake tables under the arches, balloons and story panels from the in-house decorator." },
+  { title: "Anniversaries & reunions", body: "Milestone reels on the TV screens, a memory lane of photos, and seating that respects three generations." },
+  { title: "Corporate & seminars", body: "Projector, TV screens, stage microphone and a hall quiet enough to think in — tea on the dining side." },
 ] as const;
 
-export const EXPERIENCES = [
-  { num: "i", title: "The Wedding", body: "Multi-day ceremonies with halls, lawn, and a décor panel that reads a mood board like a manuscript. Muhurat dates get priority holds." },
-  { num: "ii", title: "The Reception", body: "Stage greeting lines, a lit-up arch entrance, and a dining annex so dinner flows while hosts photograph and toast." },
-  { num: "iii", title: "Sangeet & DJ Night", body: "Bring your own DJ (with licence) — reviews say the hall “was built to dance in.” Amplified sound, light rigs, late finish." },
-  { num: "iv", title: "Haldi & Mehendi", body: "Tent courtyards on the lawn, dupatta lines, boardwalk seating for the aunties, and a wash-ready annex right behind." },
-  { num: "v", title: "Engagement & Ring Ceremony", body: "Intimate seating around a dressed stage for 200–400; elders' blessing seats and photo-friendly lighting by default." },
-  { num: "vi", title: "Nikaah Programme", body: "Reverently arranged mehfil seating, coordinated halal catering, and quiet family suites for the elders' sessions." },
-  { num: "vii", title: "Birthday, Naming & Baby Showers", body: "Cake tables under the arch, soft balloon artistry on the panel's résumé, and rooms for the kids to nap." },
-  { num: "viii", title: "Corporate & Seminars", body: "Projector and TV screens, stage with mic, boardroom-quiet AC hall, and tea-time in the annex. Conferences to prom fares." },
-  { num: "ix", title: "Anniversaries & Reunions", body: "Milestone reels on the TVs, memory lanes of photos, and a turnout plan for three generations to sit well." },
-] as const;
-
-export const DAY_RHYTHM = [
-  { pill: "Morning · from 10:00 AM", title: "Ready & dressed", body: "Bridal suite opens with the AC on. Décor team finishes the mandap while you sip your chai. Haldi and mehendi unfold on the lawn." },
-  { pill: "Afternoon", title: "Ceremonies & lunch", body: "Rituals at the stage. Guests move to the dining annex in waves — no queue crossings, air conditioning wherever it counts." },
-  { pill: "Evening · till late", title: "Lights, stage, farewell", body: "Chandeliers up, DJ on, chandelier-glow photographs — then a comfortable overnight wind-down with family rooms." },
-] as const;
-
-export type GalCat = "hall" | "lawn" | "moments";
+export type GalCat = "hall" | "garden" | "dining" | "nights";
 export const GALLERY_FILTERS: { key: GalCat | "all"; label: string }[] = [
   { key: "all", label: "All" },
-  { key: "hall", label: "The Hall" },
-  { key: "lawn", label: "The Lawn" },
-  { key: "moments", label: "Celebrations" },
+  { key: "hall", label: "The hall" },
+  { key: "garden", label: "The garden" },
+  { key: "dining", label: "Dining" },
+  { key: "nights", label: "After dark" },
 ];
-export const GALLERY_ITEMS: {
-  cat: GalCat; cap: string; kind: Ph | "photo"; span?: boolean;
+
+export const GALLERY: {
+  src: string; cat: GalCat; cap: string; alt: string; wide?: boolean;
 }[] = [
-  { cat: "hall", cap: "The Vintage Palace — Golconda Road", kind: "photo", span: true },
-  { cat: "hall", cap: "Palace Hall — the chandelier view", kind: "chandelier", span: true },
-  { cat: "lawn", cap: "Royal Lawn — evening glow", kind: "lawn" },
-  { cat: "hall", cap: "Grand Foyer — the welcome arch", kind: "foyer" },
-  { cat: "moments", cap: "Sangeet night, lights low", kind: "lights" },
-  { cat: "hall", cap: "Stage — milestones and reels", kind: "chandelier" },
-  { cat: "lawn", cap: "Mehendi courtyard — marigold morning", kind: "lawn" },
-  { cat: "moments", cap: "Reception evening — dressed to the nines", kind: "foyer" },
-  { cat: "lawn", cap: "Mandap morning — hawan-ready", kind: "lawn" },
-  { cat: "moments", cap: "Dining annex — the flow that never stops", kind: "foyer" },
-  { cat: "hall", cap: "Bridal suite — morning prep, AC on", kind: "lights" },
-  { cat: "moments", cap: "The farewell — petals and prayers", kind: "foyer" },
+  { src: IMG["venue-hero"], cat: "nights", cap: "The palace after dark · Golconda Road", alt: "The full palace facade lit at night with the venue's name on the gate", wide: true },
+  { src: IMG["gold-arches"], cat: "nights", cap: "The entrance arcade, after dark", alt: "The entrance arcade facade at night with gold and columns" },
+  { src: IMG["reception-floor"], cat: "hall", cap: "The reception floor, dressed for an evening", alt: "Reception floor with tufted sofas, floral chandeliers and chandelier discs" },
+  { src: IMG["hall-theatre"], cat: "hall", cap: "Ceremony seating facing the tall stage", alt: "Theatre-style seating inside the banquet hall facing the lit stage" },
+  { src: IMG["stage-violet"], cat: "hall", cap: "A stage dressed in violet for the sangeet", alt: "Stage dressed in violet light with floral discs and chandeliers" },
+  { src: IMG["hall-day"], cat: "hall", cap: "The hall in daylight, family-seated", alt: "The banquet hall in daylight with cream sofas and gold arches" },
+  { src: IMG["mandap-seats"], cat: "hall", cap: "The carved mandap, dressed for the rites", alt: "A carved white mandap with red floral arches dressed inside the hall" },
+  { src: IMG["lawn-floodlit"], cat: "garden", cap: "The floodlit garden, after dark", alt: "The garden floodlit at night with arches, palms and a glowing rose window" },
+  { src: IMG["dining-night"], cat: "dining", cap: "Dinner dressed in wine & gold", alt: "Dining tables dressed in wine covers with gold sashes and set plates" },
+  { src: IMG["dining-halls"], cat: "dining", cap: "The dining hall, set for the families", alt: "The dining hall with red chairs, white plates and planters" },
 ];
 
 export const RATINGS = [
-  { src: "Google", w: "86%", display: "4.3 / 5" },
-  { src: "WedMeGood", w: "96%", display: "4.8 / 5" },
-  { src: "Wheree", w: "88%", display: "4.4 / 5" },
-  { src: "Reliability", w: "92%", display: "9.2 / 10" },
-  { src: "Service quality", w: "90%", display: "9.0 / 10" },
-  { src: "Customer service", w: "85%", display: "8.5 / 10" },
-] as const;
-
-export const LOVE_CHIPS = [
-  "✦ Elegant interiors & chandeliers",
-  "✦ Spacious halls",
-  "✦ Well-organised seating",
-  "✦ Courteous staff",
-  "✦ Clean facilities",
-  "✦ Separate dining areas",
-  "✦ Grand celebrations handled calmly",
+  { big: "4.8★", src: "WedMeGood · 3 reviews", href: "https://www.wedmegood.com/wedding-venues/The-Vintage-Palace-999842" },
+  { big: "4.3★", src: "Google · 39 reviews, via Wheree", href: "https://the-vintage-palace.wheree.com/" },
+  { big: "9.2/10", src: "Reliability · BanquetHub", href: "https://banquethub.in/venue/the-vintage-palace" },
 ] as const;
 
 export const VERBATIM = [
-  { q: "This location was selected for the wedding and the entire experience here was so amazing. The whole place was so beautiful and everyone loved it.", who: "Ayesha", meta: "Wedding · WedMeGood · 5★", av: "A" },
-  { q: "We had approximately 700 guests, all of them were seated properly and given proper catering. Everyone appreciated the venue very much.", who: "Setu Sanghavi", meta: "700-guest reception · WedMeGood · 4.5★", av: "S" },
-  { q: "The destination was simply beautiful. Everything from lights to sitting to the staff was perfect.", who: "Snehith Reddy", meta: "Wedding · WedMeGood · 5★", av: "S" },
-  { q: "They have amazing interiors and nice ambience — a spacious convention, very beautiful and apt for a wedding.", who: "Listed guest", meta: "WedMeGood review round-up", av: "K" },
+  {
+    stars: 5,
+    quote: "This location was selected for the wedding and the entire experience here was so amazing. The whole place was so beautiful and everyone loved it.",
+    who: "Snehith Reddy",
+    when: "Apr 2025",
+    src: "WedMeGood",
+  },
+  {
+    stars: 5,
+    quote: "The destination was simply beautiful. Everything from lights to sitting to the staff was perfect. We had approximately 700 guests, all of them were seated properly and given proper catering. Everyone appreciated the venue very much.",
+    who: "Ayesha",
+    when: "Apr 2020",
+    src: "WedMeGood",
+  },
+  {
+    stars: 4.5,
+    quote: "The Vintage Palace is a spacious convention and is very beautiful and apt for a wedding. They have amazing interiors and nice ambiance.",
+    who: "Setu Sanghavi",
+    when: "Dec 2018",
+    src: "WedMeGood",
+  },
 ] as const;
 
-export const PACKAGES = [
-  { name: "The Palace Hall", amt: "₹2.7L", unit: "from, per function", tag: "AC · Indoor", hero: false, badge: "", suit: "For ceremonies that love the indoors", items: ["400 seated · 700 floating", "Chandelier-lit, fully air-conditioned", "Stage, projector & TV screens", "2 complimentary AC bridal suites", "Power backup included in rental window"], cta: "Hold this number" },
-  { name: "The Royal Lawn", amt: "₹3.5L", unit: "full day, open air", tag: "Most booked", hero: true, badge: "Most Booked", suit: "For the grandest of grand days", items: ["950 seated · 1,500 floating", "Mandap, baraat entrance & hawan-ready", "Dining annex with independent flow", "Overnight events permitted till ~6 AM", "Parking for 100–110 cars included"], cta: "Reserve a date" },
-  { name: "Décor & Kitchen", amt: "₹30K", unit: "from, décor panel", tag: "", hero: false, badge: "", suit: "The finishing touches", items: ["Panel decorators from ₹30,000–₹40,000+", "In-house catering team (veg & non-veg)", "Menu tasting before the final quote", "18% GST on F&B, stated upfront", "Generator/diesel billed at actuals"], cta: "Get a décor brief" },
+export const HONEST = [
+  { num: "One", t: "Parking at peak evenings", b: "The on-site lot holds 110 vehicles — generous by old-city standards, but on the busiest muhurat nights the front rows fill early. Arrive a touch early, or let the team stage the gate for drop-and-park flow. This is simply what hosts should expect at peak times." },
+  { num: "Two", t: "These halls are not air-conditioned", b: "The halls are high, arched and well-ventilated, with coolers on the floor and additional arrangements possible. If you expect a sealed, chilled ballroom, call ahead and discuss cooling for your date — the team will show you what the halls feel like on a similar evening." },
 ] as const;
 
-export const PRICE_PRINCIPLES = [
-  { t: "Published", b: "The base rentals you just read are the numbers we quote. No password-gated PDFs, no “call for price” games." },
-  { t: "Itemised", b: "Advance, balance, décor, catering, GST and diesel — one payable sheet, line by line, before you commit." },
-  { t: "Adjustable", b: "The ₹75,000 advance is non-refundable but fully adjustable across any occasion at the venue within 3 months." },
-  { t: "Guided", b: "Our events desk walks you through the sheet on a call — every rupee explained in plain words." },
+export const PLANS = [
+  {
+    num: "Catering",
+    amt: "₹400",
+    unit: "veg, per plate",
+    alt: ["Non-veg menus from ", "₹500", " a plate"],
+    checks: [
+      "Served by the in-house kitchen across hall & dining",
+      "Multi-cuisine and special-diet requests welcomed",
+      "18% GST applies on food & beverage",
+    ],
+  },
+  {
+    num: "Venue rental",
+    amt: "On request",
+    unit: "quoted per date",
+    alt: ["Quotes move with the season, the space and the slot", "", ""],
+    checks: [
+      "Hall, garden or full-campus bookings",
+      "Muhurat dates are asked for months ahead",
+      "One itemised estimate before you commit",
+    ],
+  },
+  {
+    num: "Stay",
+    amt: "₹1,000",
+    unit: "avg per room, per night",
+    alt: ["Five rooms on premises for the families", "", ""],
+    checks: [
+      "Changing rooms available for the wedding party (non-AC)",
+      "Elders rest on campus between rituals",
+      "Overnight weddings permitted",
+    ],
+  },
 ] as const;
 
-export const PRICE_NOTE =
-  "Advance ₹75,000 at booking · balance due 3 days before the event · non-refundable, but fully adjustable within 3 months across any occasion · GST & actuals extra. Bookings via cash, bank transfer, cheques or cards.";
+export const PRICE_NOTE_SOURCE = "Booking advance: ₹75,000 at confirmation. Every figure on this page is published on the venue's official Weddingz and Wedding.net listings — nothing on this page is a mock-up.";
 
 export const POLICIES = [
-  { q: "Booking & advance", a: "₹75,000 at booking; the remainder 3 days before the event date. Amounts are non-refundable but adjustable within 3 months for any occasion at the venue." },
-  { q: "Décor policy", a: "Décor is executed by the venue's panel decorators (from ₹30,000). Outside decorator panels are not permitted, which keeps quality and teardown discipline consistent." },
-  { q: "Catering", a: "The house kitchen and caterers serve veg and non-veg menus; outside food is generally not brought in. Final menu and per-plate pricing are fixed after tasting." },
-  { q: "DJ & music", a: "The venue doesn't run a house DJ — bring your own with the required licence. Amplified sound respects neighbourhood late-night norms." },
-  { q: "Alcohol", a: "Serving alcohol requires a valid liquor licence arranged by the host, with standard corkage norms thereafter." },
-  { q: "What's not allowed", a: "Firecrackers are not permitted. Hawan is warmly permitted; baarat and overnight weddings are welcome." },
-  { q: "Power & electricity", a: "Hall electrical usage and generator charges are billed at actuals (diesel beyond the base figure). Power backup is on-site throughout your slot." },
-  { q: "Rooms", a: "Two complimentary fully-AC changing/bridal rooms with attached bathrooms; additional guest rooms on campus (standard doubles from about ₹1,000/night)." },
-  { q: "Taxes & payment", a: "18% GST applies on F&B; venue rental terms as quoted. Pay by cash, bank transfer, cheque, or credit/debit card." },
+  { k: "Booking & advance", v: "₹75,000 advance confirms the date; balances close before the event. Cancellation terms are confirmed on the call before any payment is made." },
+  { k: "Catering", v: "Veg ₹400 / non-veg ₹500 per plate + 18% GST. The in-house kitchen serves; outside caterers are permitted on request." },
+  { k: "Decor", v: "An in-house decorator executes the mandap, stage and florals; outside decorators are also permitted. Fireworks are not." },
+  { k: "DJ & music", v: "No house DJ — bring your own with the required music licence. The house keeps amplified sound off after late hours, out of respect for the neighbourhood." },
+  { k: "Alcohol", v: "Outside alcohol is permitted, subject to corkage norms and the host arranging the required permits." },
+  { k: "Rituals", v: "Hawan, baarat entrances and overnight weddings are all warmly permitted. Firecrackers are not." },
+  { k: "Parking", v: "On-premises lot for 110 vehicles, no valet. Peak muhurat evenings fill the front rows early." },
+  { k: "Comfort", v: "Halls are high, arched and well-ventilated — not air-conditioned. Cooling arrangements can be discussed for your date; changing rooms are non-AC." },
+  { k: "Timing", v: "Booking slots open from 10 am; site visits run 11 am – 10 pm every day." },
 ] as const;
 
 export const FAQS = [
-  { q: "How many guests can The Vintage Palace host?", a: "600–3,000: the Palace Hall seats 400 (700 floating); the Royal Lawn seats 950 (1,500 floating). Combined evening events have run near 3,000." },
-  { q: "What's the total budget shape?", a: "Rental from ₹2.7L (hall) or ₹3.5L full day (lawn) + décor from ₹30K + food per plate + 18% GST on F&B + generator actuals. The events desk gives a single payable sheet before you commit." },
-  { q: "Can we visit before booking?", a: "Always. Site visits run daily 11 AM–10 PM. Call +91 91603 74743 or use the contact form." },
-  { q: "Is the date adjustable if plans change?", a: "Yes — payments are non-refundable but adjustable within 3 months for any occasion at the venue, subject to availability." },
-  { q: "Do you allow outside caterers?", a: "The venue's in-house kitchen handles catering to hold quality and hygiene steady. Special-diet and multi-cuisine requests are welcomed at the briefing." },
-  { q: "Which documents do we bring for booking?", a: "A basic ID and the advance amount. For liquor service, the host arranges a valid liquor licence. For your own DJ, a music licence." },
-  { q: "Is parking really enough for 1,000+ guests?", a: "On-premises parking holds 100–110 cars, and the main-road location keeps drop-and-park queues moving. For very large evenings, arrive early — as with most venues in the old city." },
-  { q: "How early should we book for muhurat dates?", a: "Muhurat-season Saturdays pull date requests months ahead. Enquire at least 3–4 months out for peak dates; off-season flexibility extends to the 3-month adjustability window." },
+  { q: "What does a wedding actually cost here?", a: "The shape is: venue rental (quoted per date) + catering (₹400–₹500 a plate + 18% GST) + decor + DJ/photography you bring. Call the events desk with your date and headcount — you'll get one itemised estimate before you commit to anything.", first: true },
+  { q: "How many guests fit comfortably?", a: "The banquet hall seats 400 (700 floating); the floodlit garden seats 950 (1,500 floating). For the biggest evenings, both spaces run together.", first: false },
+  { q: "Can we bring our own caterer or decorator?", a: "Yes to both — outside caterers and outside decorators are permitted, and the house teams coordinate with them at the briefing.", first: false },
+  { q: "Are the halls air-conditioned?", a: "No — the halls are high, arched and well-ventilated with coolers on the floor. If your date falls in the hottest weeks, discuss additional cooling at the site visit and feel the hall on a similar evening yourself.", first: false },
+  { q: "Can the DJ play late into the night?", a: "The finale lands before the neighbourhood's late-night hush — plan the last dance early in the evening. Overnight weddings are permitted, so families can continue on campus without amplified sound.", first: false },
+  { q: "Is there parking for 1,000+ guests?", a: "The on-site lot holds 110 vehicles with no valet. On the busiest muhurat nights the front rows fill early — arrive a touch early, or let the team stage the gate for drop-and-park flow.", first: false },
+  { q: "How early should we book for muhurat dates?", a: "Peak-season Saturdays get asked for months ahead. Enquire at least 3–4 months out for popular dates; the ₹75,000 advance locks yours.", first: false },
 ] as const;
 
 export const MARQUEE = [
-  "Weddings", "Receptions", "Sangeet", "Mehendi", "Engagements", "Nikaah", "Birthdays", "Corporate Events", "Anniversaries", "Baby Showers",
+  "Banquet hall", "Floodlit garden", "In-house kitchen", "In-house decorator", "Five rooms on campus", "110-car parking", "Overnight weddings",
 ] as const;
+
+export const BREADCRUMB = (name: string, path: string) =>
+  ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name, item: `${SITE.url}${path}` },
+    ],
+  }) as const;

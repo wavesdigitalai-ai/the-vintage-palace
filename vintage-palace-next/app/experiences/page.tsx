@@ -1,93 +1,122 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { PageHero } from "@/components/PageHero";
-import { Reveal } from "@/components/Reveal";
-import { DAY_RHYTHM, EXPERIENCES } from "@/lib/venue";
+import { PageHero, BreadcrumbJsonLd } from "@/components/PageHero";
+import { CtaActions } from "@/components/SiteFooter";
+import { IMG, OCCASIONS } from "@/lib/venue";
 
-export const metadata: Metadata = {
-  title: "Experiences — Weddings to Corporate Events",
+export const metadata = {
+  title: "Occasions",
   description:
-    "Every occasion gets its own room at The Vintage Palace: wedding ceremonies, receptions, sangeets, mehendi, engagements, nikaahs, birthdays, anniversaries, baby showers, farewells and corporate conferences on Golconda Road, Hyderabad.",
+    "From haldi mornings to late receptions — how weddings, sangeets, nikaahs, engagements, birthdays, anniversaries and corporate events unfold at The Vintage Palace, Karwan.",
   alternates: { canonical: "/experiences" },
-  openGraph: { title: "Experiences — The Vintage Palace, Hyderabad", description: "One campus, every celebration — from the first haldi to the final farewell.", images: ["/images/venue-hero.jpg"] },
+  openGraph: { title: "Occasions — The Vintage Palace, Hyderabad", images: [IMG["stage-violet"]] },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://thevintagepalace.in" },
-    { "@type": "ListItem", position: 2, name: "Experiences", item: "https://thevintagepalace.in/experiences" },
-  ],
-};
+const RHYTHM = [
+  {
+    num: "Morning",
+    h: "10:00 am · doors open, decor done",
+    img: IMG["hall-day"],
+    cap: "Guest rows face the stage — the family rows in between",
+    alt: "The banquet hall with ceremony seating facing the stage in daylight",
+    lead: "Booking slots open at 10 am. The decorator finishes the mandap while the family drinks chai in the changing rooms. Haldi unfolds first on the day sheet.",
+    muted: "Site visits run 11 am – 10 pm daily, so daytime walk-throughs are easy to arrange around work hours.",
+  },
+  {
+    num: "Afternoon",
+    h: "Rituals, then the dining hall",
+    img: IMG["dining-halls"],
+    cap: "Dinner in waves · no queue crossings",
+    alt: "The dining hall set with red chairs and planters, fans above",
+    lead: "Wedding rites conclude at the stage. Guests move to dinner in waves; the greeting line stays clear for portraits and conversations.",
+    muted: "Well-ventilated halls plus coolers keep the afternoon humane — ask the team about threshold cooling on your date.",
+  },
+  {
+    num: "Evening",
+    h: "Chandeliers, spotlight, farewell",
+    img: IMG["stage-violet"],
+    cap: "Lights up, DJ on — till the house's late rules",
+    alt: "The stage dressed in violet for the evening celebration",
+    lead: "Overnight weddings are permitted, and the garden knows how to glow — but the house respects its neighbours: no late-night music, so plan the last dance before the night hush.",
+    muted: "Dessert at the farewell, rest for the elders in the rooms, then families turn in on campus.",
+  },
+];
 
 export default function ExperiencesPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BreadcrumbJsonLd name="Occasions" path="/experiences" />
       <PageHero
-        label="Experiences"
-        title="One Campus, Every Celebration"
-        lead="Eighteen event types seen on one campus — moods shifting under the same chandeliers, season after season."
+        img={IMG["stage-violet"]}
+        alt="The banquet hall stage dressed in violet light for a sangeet"
+        crumb="Occasions"
+        title={<>One campus, every celebration.</>}
+        lead="Moods shift under the same chandeliers — from the first haldi stain to the final farewell."
       />
 
-      <section className="py-[clamp(4rem,3rem+5vw,7.5rem)]" aria-labelledby="occ-h">
-        <div className="mx-auto w-[min(1180px,100%-2.5rem)]">
-          <div className="mx-auto mb-12 max-w-[46rem] text-center">
-            <Reveal>
-              <p className="eyebrow" style={{ justifyContent: "center" }}>Occasions</p>
-              <h2 id="occ-h" className="h-display">Choose the mood, we bring the grace</h2>
-            </Reveal>
+      {/* EDITORIAL LIST */}
+      <section className="sec" aria-labelledby="occ">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <p className="kicker">The list</p>
+            <h2 id="occ" className="h2">
+              Nine occasions, <em>one address</em>
+            </h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {EXPERIENCES.map((e, i) => (
-              <Reveal key={e.title} delay={(i % 3) * 0.06}>
-                <article className="relative h-full rounded-3xl border border-ink/10 bg-white p-9 shadow-[0_10px_30px_rgba(42,27,15,.10)] transition-all duration-500 hover:-translate-y-2 hover:border-gold hover:shadow-[0_18px_44px_rgba(42,27,15,.16)]">
-                  <span className="h-display absolute right-6 top-5 text-3xl italic text-gold/30">{e.num}</span>
-                  <h3 className="h-display text-2xl">{e.title}</h3>
-                  <p className="text-[0.95rem] text-ink-soft">{e.body}</p>
-                </article>
-              </Reveal>
+          <div className="ed-list">
+            {OCCASIONS.map((o) => (
+              <div key={o.title} className="ed-item rv">
+                <h3>{o.title}</h3>
+                <p>{o.body}</p>
+                <span className="arr">→</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-wine py-[clamp(4rem,3rem+5vw,7.5rem)] text-ivory" aria-labelledby="day-h">
-        <div className="mx-auto w-[min(1180px,100%-2.5rem)]">
-          <div className="mx-auto mb-12 max-w-[46rem] text-center">
-            <Reveal>
-              <p className="eyebrow eyebrow--light" style={{ justifyContent: "center" }}>Your day, our way</p>
-              <h2 id="day-h" className="h-display">A rhythm that keeps the day kind</h2>
-            </Reveal>
+      {/* RHYTHM */}
+      <section className="sec sec--tint" aria-labelledby="rhythm">
+        <div className="wrap">
+          <div className="sec-head centered rv">
+            <p className="kicker">Your day</p>
+            <h2 id="rhythm" className="h2">
+              A rhythm that keeps the day <em>kind</em>
+            </h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            {DAY_RHYTHM.map((d, i) => (
-              <Reveal key={d.title} delay={i * 0.06}>
-                <div>
-                  <span className="inline-flex rounded-full border border-gold/40 px-4 py-1.5 text-[0.72rem] uppercase tracking-[0.14em] text-gold-brt">
-                    {d.pill}
-                  </span>
-                  <h3 className="h-display mt-4 text-2xl">{d.title}</h3>
-                  <p className="text-ivory/80">{d.body}</p>
+          {RHYTHM.map((r, i) => (
+            <div key={r.num} className={`chapter${i % 2 === 1 ? " flip" : ""}`}>
+              <figure className={`chapter-media rv ${i % 2 === 1 ? "rv--right" : "rv--left"}`}>
+                <div className="frame">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={r.img} alt={r.alt} data-parallax="-0.05" />
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <figcaption>{r.cap}</figcaption>
+              </figure>
+              <div className="chapter-copy rv">
+                <span className="numeral">{r.num}</span>
+                <h2 className="h3">{r.h}</h2>
+                <p className="lead">{r.lead}</p>
+                <p className="muted">{r.muted}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="py-[clamp(4rem,3rem+5vw,7.5rem)] text-center">
-        <div className="mx-auto w-[min(1180px,100%-2.5rem)]">
-          <Reveal>
-            <h2 className="h-display">Your occasion, listed and loved</h2>
-            <p className="mx-auto max-w-[34rem] text-ink-soft">
-              Tell us the occasion and the rough headcount. We’ll respond with spaces, date options and a full cost sheet.
+      {/* CTA */}
+      <section className="sec sec--dark cta-dark" aria-labelledby="cta">
+        <div className="wrap">
+          <div className="rv">
+            <h2 id="cta" className="h2">
+              Your occasion, <em>listed and loved</em>
+            </h2>
+            <p className="muted" style={{ marginTop: "1rem" }}>
+              Tell us the occasion and the rough headcount. We&apos;ll respond with spaces, dates and a full cost sheet
+              over the phone.
             </p>
-          </Reveal>
-          <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-            <Link href="/contact" className="btn"><span>Start an enquiry</span></Link>
-            <Link href="/pricing" className="btn btn--ghost"><span>See the pricing</span></Link>
+            <CtaActions
+              primary={{ href: "tel:+919160374743", label: "Start the enquiry" }}
+              secondary={{ href: "/pricing", label: "See the pricing" }}
+            />
           </div>
         </div>
       </section>
