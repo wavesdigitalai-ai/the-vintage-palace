@@ -3,8 +3,10 @@
 Website system for "The Vintage Palace" wedding venue (Pillar No. 102, Golconda
 Road, Karwan, Hyderabad 500006), maintained as **two twins with identical
 content and an identical editorial design** (Cormorant Garamond + Manrope,
-paper/ink/brass palette, scroll-reveal motion; enquiry is phone + site visit
-only — no WhatsApp anywhere):
+warm-paper/ink/brass palette, scroll-reveal motion; enquiry is WhatsApp-first —
+header links and all CTA buttons open `wa.me/919160374743` with a prefilled
+message, the phone number stays as a `tel:` link in the footer/drawer/fact
+sheet for people who prefer to call, and there is no forms backend):
 
 | Folder | Stack | Where to publish |
 |---|---|---|

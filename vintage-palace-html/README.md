@@ -2,7 +2,7 @@
 
 A static, no-build venue website (HTML + CSS + vanilla JS) for **The Vintage Palace**, Pillar No. 102, Golconda Road, beside Mahaboob Pride Function Hall, Karwan West, Hyderabad 500006. Phone: **+91 91603 74743**.
 
-Design: minimalist editorial system — Cormorant Garamond display + Manrope body, paper/ink/brass palette, scroll-reveal motion (line-masked hero titles, directional reveals, parallax, counters), full-bleed real photography. **No frameworks, no build step, no WhatsApp anywhere** — enquiry is a phone call and a site visit, like the venue itself works.
+Design: minimalist editorial system — Cormorant Garamond display + Manrope body, warm-paper/ink/brass palette, scroll-reveal motion (soft single-rise hero titles, directional reveals, parallax, counters), full-bleed real photography. **No frameworks, no build step.** Enquiry is WhatsApp-first: header links (desktop label + mobile icon) and every CTA open `wa.me/919160374743` with a prefilled message; the phone +91 91603 74743 stays as a `tel:` link in the footer, drawer and fact sheet for people who prefer to call — no forms backend.
 
 Pages: `index.html` → `venue.html` → `experiences.html` → `gallery.html` → `reviews.html` → `pricing.html` → `contact.html`. All content is real and sourced — nothing placeholder, nothing invented.
 
@@ -20,13 +20,13 @@ A Next.js version of this same site lives at **`../vintage-palace-next/`** in th
 | `gallery.html` | Ten real, filterable photographs (hall / garden / dining / after dark) with keyboard-accessible lightbox |
 | `reviews.html` | 4.8★ WedMeGood (3 reviews), 4.3★ Google (39, via Wheree), 9.2/10 BanquetHub — three verbatim dated quotes + the honest note (non-AC halls, peak parking) + all nine directory profiles |
 | `pricing.html` | Verified numbers only: ₹400 veg / ₹500 non-veg plates + 18% GST, ₹1,000 avg rooms, ₹75,000 advance, rental on request — full policy sheet + FAQ |
-| `contact.html` | The events desk phone, address & directions (coords 17.375808, 78.434052), visiting hours, what to have ready when you call, embedded map |
+| `contact.html` | WhatsApp enquiry (+91 91603 74743), address & directions (coords 17.375808, 78.434052), daily visit hours, "three things in hand" checklist, embedded map |
 
 Deliberate design stances: **no warning-toast flourishes, no fake urgency, no invented packages.** The pricing page quotes only figures published on the venue's own listings; seasonal rental is marked "on request".
 
 ## 2. Motion system (`assets/js/main.js` + `assets/css/style.css`)
 
-- `[data-lines]` hero titles split into line-masked reveals; hero photo carries a slow ken-burns.
+- `[data-lines]` hero titles wrap into block lines, revealed by a single soft rise; hero photo carries a slow ken-burns.
 - `.rv` reveal-on-scroll (IntersectObserver) with `rv--left/right` variants and `--d` stagger.
 - `[data-parallax]` gentle media drift; `[data-count]` stat counters; `.chip[data-filter]` gallery filtering; lightbox with arrow keys/Escape.
 - `prefers-reduced-motion` disables all of it.
