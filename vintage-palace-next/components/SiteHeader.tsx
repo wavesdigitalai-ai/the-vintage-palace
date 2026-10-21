@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NAV, SITE } from "@/lib/venue";
+import { NAV, SITE, waLink } from "@/lib/venue";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +27,7 @@ export function SiteHeader() {
   return (
     <header className={`site-head on-dark${scrolled ? " scrolled" : ""}${open ? " menu-open" : ""}`}>
       <div className="wrap">
-        <Link href="/" className="brand" aria-label={`${SITE.name} — home`}>
+        <Link href="/" className="brand" aria-label={`${SITE.name} â€” home`}>
           <svg viewBox="0 0 64 64" aria-hidden="true">
             <rect width="64" height="64" rx="14" fill="#14100B" />
             <path d="M14 52V30a18 18 0 0 1 36 0v22" fill="none" stroke="#C7A76B" strokeWidth="1.5" />
@@ -35,7 +35,7 @@ export function SiteHeader() {
           </svg>
           <span>
             <span className="brand-name">The Vintage Palace</span>
-            <span className="brand-sub">Karwan · Hyderabad</span>
+            <span className="brand-sub">Karwan Â· Hyderabad</span>
           </span>
         </Link>
         <nav className="nav" aria-label="Primary">
@@ -48,8 +48,8 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <a className="head-call" href={`tel:${SITE.phoneDial}`}>
-          Call · {SITE.phone}
+        <a className="head-call" href={waLink()}>
+          WhatsApp · {SITE.phone}
         </a>
         <button className="burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(!open)}>
           <span></span>
@@ -62,7 +62,7 @@ export function SiteHeader() {
           </Link>
         ))}
         <p className="drawer-foot">
-          Site visits 11 am – 10 pm, daily · <a href={`tel:${SITE.phoneDial}`}>{SITE.phone}</a>
+          Site visits 11 am â€“ 10 pm, daily Â· <a href={waLink()}>{SITE.phone}</a>
         </p>
       </nav>
     </header>

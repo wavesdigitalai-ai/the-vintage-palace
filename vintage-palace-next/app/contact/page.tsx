@@ -1,19 +1,19 @@
-import { PageHero, BreadcrumbJsonLd } from "@/components/PageHero";
+﻿import { PageHero, BreadcrumbJsonLd } from "@/components/PageHero";
 import { CtaActions } from "@/components/SiteFooter";
-import { IMG, SITE } from "@/lib/venue";
+import { IMG, SITE, waLink } from "@/lib/venue";
 
 export const metadata = {
   title: "Contact & Directions",
   description:
-    "Plan a site visit to The Vintage Palace: Pillar No. 102, Golconda Road, Karwan West, Hyderabad 500006 · call +91 91603 74743 · site visits daily, 11 am – 10 pm.",
+    "Plan a site visit to The Vintage Palace: Pillar No. 102, Golconda Road, Karwan West, Hyderabad 500006 Â· call +91 91603 74743 Â· site visits daily, 11 am â€“ 10 pm.",
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact — The Vintage Palace, Hyderabad", images: [IMG["venue-hero"]] },
+  openGraph: { title: "Contact â€” The Vintage Palace, Hyderabad", images: [IMG["venue-hero"]] },
 };
 
 const READY = [
   "Your date (or two dates, if flexible)",
-  "Rough guest count — 200 or 1,500, both welcome",
-  "The occasion — hall, garden or full campus follows from it",
+  "Rough guest count â€” 200 or 1,500, both welcome",
+  "The occasion â€” hall, garden or full campus follows from it",
 ];
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
             Come walk the <em>halls.</em>
           </>
         }
-        lead="One call sets up a guided visit — morning light, evening light, and every corner in between."
+        lead="One call sets up a guided visit â€” morning light, evening light, and every corner in between."
       />
 
       {/* CALL STRIP */}
@@ -40,12 +40,10 @@ export default function ContactPage() {
               The events desk
             </p>
             <p style={{ margin: 0 }}>
-              <a className="tel-hero" href={`tel:${SITE.phoneDial}`}>
-                {SITE.phone}
-              </a>
+              <a className="tel-hero" href={waLink()}>WhatsApp · {SITE.phone}</a>
             </p>
             <p className="muted" style={{ marginTop: "1rem" }}>
-              Site visits daily · 11 am – 10 pm — daytime and after-dark walk-throughs both recommended before you book.
+              Site visits daily Â· 11 am â€“ 10 pm â€” daytime and after-dark walk-throughs both recommended before you book.
             </p>
           </div>
         </div>
@@ -78,7 +76,7 @@ export default function ContactPage() {
                 rel="noopener"
               >
                 <span>Open directions</span>
-                <span className="arr">→</span>
+                <span className="arr">â†’</span>
               </a>
             </div>
             <div className="visit-card rv" style={{ "--d": ".08s" } as React.CSSProperties}>
@@ -87,7 +85,7 @@ export default function ContactPage() {
               <dl className="hours">
                 <div>
                   <dt>Visits</dt>
-                  <dd>11:00 am – 10:00 pm, every day</dd>
+                  <dd>11:00 am â€“ 10:00 pm, every day</dd>
                 </div>
                 <div>
                   <dt>First slot</dt>
@@ -130,9 +128,9 @@ export default function ContactPage() {
               The date you want is <em>one call away</em>
             </h2>
             <p className="muted" style={{ marginTop: "1rem" }}>
-              Muhurat evenings go months ahead — the ₹75,000 advance locks yours.
+              Muhurat evenings go months ahead â€” the â‚¹75,000 advance locks yours.
             </p>
-            <CtaActions primary={{ href: `tel:${SITE.phoneDial}`, label: `Call ${SITE.phone}` }} secondary={{ href: "/pricing", label: "See pricing & policies" }} />
+            <CtaActions primary={{ href: waLink(), label: "Chat on WhatsApp" }} secondary={{ href: "/pricing", label: "See pricing & policies" }} />
           </div>
         </div>
       </section>

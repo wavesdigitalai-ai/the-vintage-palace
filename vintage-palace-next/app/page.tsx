@@ -1,19 +1,19 @@
-import Link from "next/link";
-import { IMG } from "@/lib/venue";
+﻿import Link from "next/link";
+import { IMG, waLink } from "@/lib/venue";
 
 const METRICS = [
-  { b: <>4.8<sup style={{ fontSize: "0.42em" }}>★</sup></>, s: "WedMeGood · 3 reviews" },
+  { b: <>4.8<sup style={{ fontSize: "0.42em" }}>â˜…</sup></>, s: "WedMeGood Â· 3 reviews" },
   { b: "700", s: "Seated in the hall max" },
   { b: "1,500", s: "Floating in the garden" },
-  { b: "₹400", s: "Veg plate, catering from" },
+  { b: "â‚¹400", s: "Veg plate, catering from" },
 ];
 
 const MARQUEE = ["Weddings", "Receptions", "Sangeet", "Mehendi", "Engagements", "Nikaah", "Birthdays", "Anniversaries"];
 
 const OCCASIONS = [
-  { h: "Wedding ceremony", p: "Mandaps in the garden, rituals in the hall — hawan and baarat both warmly welcomed." },
+  { h: "Wedding ceremony", p: "Mandaps in the garden, rituals in the hall â€” hawan and baarat both warmly welcomed." },
   { h: "Grand reception", p: "A dressed stage, greeting lines, and dinner that keeps flowing while hosts meet guests." },
-  { h: "Sangeet & DJ night", p: "Bring your own DJ with music licence — the hall was built to be danced in." },
+  { h: "Sangeet & DJ night", p: "Bring your own DJ with music licence â€” the hall was built to be danced in." },
   { h: "Haldi & mehendi", p: "Daytime slots on the garden, with room for the colour to spill." },
   { h: "Engagement & nikaah", p: "Intimate mehfil seating for elders, halal-catering coordination." },
   { h: "Birthdays & anniversaries", p: "Cake tables under the arch, five rooms for family between moments." },
@@ -21,13 +21,13 @@ const OCCASIONS = [
 ];
 
 const REVIEWS = [
-  { stars: "★★★★★", label: "5 stars", q: "This location was selected for the wedding and the entire experience here was so amazing. The whole place was so beautiful and everyone loved it.", who: "Snehith Reddy", when: "Apr 2025", d: "0s", half: false },
-  { stars: "★★★★★", label: "5 stars", q: "We had approximately 700 guests, all of them were seated properly and given proper catering. Everyone appreciated the venue very much.", who: "Ayesha", when: "Apr 2020", d: ".08s", half: false },
-  { stars: "★★★★★", label: "4 and a half stars", q: "The Vintage Palace is a spacious convention and is very beautiful and apt for a wedding. They have amazing interiors and nice ambiance.", who: "Setu Sanghavi", when: "Dec 2018", d: ".16s", half: true },
+  { stars: "â˜…â˜…â˜…â˜…â˜…", label: "5 stars", q: "This location was selected for the wedding and the entire experience here was so amazing. The whole place was so beautiful and everyone loved it.", who: "Snehith Reddy", when: "Apr 2025", d: "0s", half: false },
+  { stars: "â˜…â˜…â˜…â˜…â˜…", label: "5 stars", q: "We had approximately 700 guests, all of them were seated properly and given proper catering. Everyone appreciated the venue very much.", who: "Ayesha", when: "Apr 2020", d: ".08s", half: false },
+  { stars: "â˜…â˜…â˜…â˜…â˜…", label: "4 and a half stars", q: "The Vintage Palace is a spacious convention and is very beautiful and apt for a wedding. They have amazing interiors and nice ambiance.", who: "Setu Sanghavi", when: "Dec 2018", d: ".16s", half: true },
 ];
 
 export const metadata = {
-  title: "The Vintage Palace — Wedding & Event Venue in Karwan, Hyderabad",
+  title: "The Vintage Palace â€” Wedding & Event Venue in Karwan, Hyderabad",
   alternates: { canonical: "/" },
 };
 
@@ -45,17 +45,17 @@ export default function HomePage() {
             Your celebration, set inside a real palace.
           </h1>
           <p className="hero-lead">
-            Gold arches, carved mandaps and chandelier discs on Golconda Road — minutes from the Fort, in the old
+            Gold arches, carved mandaps and chandelier discs on Golconda Road â€” minutes from the Fort, in the old
             city&apos;s beating heart.
           </p>
           <div className="hero-cta">
             <Link className="btn btn--paper" href="/contact">
               <span>Reserve a date</span>
-              <span className="arr">→</span>
+              <span className="arr">â†’</span>
             </Link>
             <Link className="btn btn--brass" href="/gallery">
               <span>See the gallery</span>
-              <span className="arr">→</span>
+              <span className="arr">â†’</span>
             </Link>
           </div>
           <div className="hero-meta">
@@ -79,7 +79,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* CHAPTER 01 — THE HOUSE */}
+      {/* CHAPTER 01 â€” THE HOUSE */}
       <section className="sec" aria-labelledby="ch1">
         <div className="wrap chapter">
           <figure className="chapter-media rv rv--left">
@@ -90,17 +90,17 @@ export default function HomePage() {
             <figcaption>The banquet floor, dressed for an evening</figcaption>
           </figure>
           <div className="chapter-copy rv">
-            <span className="numeral">01 · The house</span>
+            <span className="numeral">01 Â· The house</span>
             <h2 id="ch1" className="h2">
               A fine relic of traditional <em>hospitality</em>
             </h2>
             <p className="lead">
-              WedMeGood&apos;s editors describe The Vintage Palace as exactly that — traditional Indian hospitality
+              WedMeGood&apos;s editors describe The Vintage Palace as exactly that â€” traditional Indian hospitality
               blended with the facilities of a modern venue. Guests repeat the sentiment in every review: beautiful,
               spacious, and apt for a wedding.
             </p>
             <p className="muted">
-              The palace stands on Golconda Road beside Mahaboob Pride Function Hall — Pillar No. 102, so your drivers
+              The palace stands on Golconda Road beside Mahaboob Pride Function Hall â€” Pillar No. 102, so your drivers
               know exactly where to stop. Temples, masjids and the Fort sit within a few minutes&apos; drive; transport
               access is one of this address&apos;s great quiet strengths.
             </p>
@@ -132,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CHAPTER 02 — HALL */}
+      {/* CHAPTER 02 â€” HALL */}
       <section className="sec sec--tint" aria-labelledby="ch2">
         <div className="wrap chapter flip">
           <figure className="chapter-media rv rv--right">
@@ -143,7 +143,7 @@ export default function HomePage() {
             <figcaption>Ceremony seating facing the tall stage</figcaption>
           </figure>
           <div className="chapter-copy rv">
-            <span className="numeral">02 · The banquet hall</span>
+            <span className="numeral">02 Â· The banquet hall</span>
             <h2 id="ch2" className="h2">
               Chandeliers, arches and a hall built <em>to be danced in</em>
             </h2>
@@ -154,18 +154,18 @@ export default function HomePage() {
             <ul className="checks">
               <li>Stage with projector &amp; TV screens for milestone reels</li>
               <li>Well-ventilated interiors; comfort cooling on request</li>
-              <li>Morning slots are welcome — overnight weddings permitted</li>
+              <li>Morning slots are welcome â€” overnight weddings permitted</li>
             </ul>
             <p style={{ marginTop: "1.8rem" }}>
               <Link className="link-more" href="/venue">
-                Explore the venue <span className="arr">→</span>
+                Explore the venue <span className="arr">â†’</span>
               </Link>
             </p>
           </div>
         </div>
       </section>
 
-      {/* CHAPTER 03 — GARDEN */}
+      {/* CHAPTER 03 â€” GARDEN */}
       <section className="sec" aria-labelledby="ch3">
         <div className="wrap chapter">
           <figure className="chapter-media rv rv--left">
@@ -176,13 +176,13 @@ export default function HomePage() {
             <figcaption>The garden, floodlit for an evening reception</figcaption>
           </figure>
           <div className="chapter-copy rv">
-            <span className="numeral">03 · The floodlit garden</span>
+            <span className="numeral">03 Â· The floodlit garden</span>
             <h2 id="ch3" className="h2">
               An open-air <em>mehfil</em> under lights
             </h2>
             <p className="lead">
               A wide green canvas for mandaps, jaan entrances and baraat processions. At night the arches, palms and rose
-              windows glow violet and champagne — it is the venue&apos;s most photographed corner after dark.
+              windows glow violet and champagne â€” it is the venue&apos;s most photographed corner after dark.
             </p>
             <ul className="checks">
               <li>Opens to a glowing arcade with a lit rose-window gallery</li>
@@ -200,7 +200,7 @@ export default function HomePage() {
             The destination was simply beautiful. Everything from lights to sitting to the staff was perfect. We had
             approximately 700 guests, all of them were seated properly and given proper catering.
           </blockquote>
-          <figcaption>Ayesha · married here · WedMeGood · April 2020</figcaption>
+          <figcaption>Ayesha Â· married here Â· WedMeGood Â· April 2020</figcaption>
         </div>
       </section>
 
@@ -218,7 +218,7 @@ export default function HomePage() {
               <Link key={o.h} className="ed-item rv" href="/experiences">
                 <h3>{o.h}</h3>
                 <p>{o.p}</p>
-                <span className="arr">→</span>
+                <span className="arr">â†’</span>
               </Link>
             ))}
           </div>
@@ -250,7 +250,7 @@ export default function HomePage() {
           </div>
           <p className="ph-note">
             <Link className="link-more" href="/gallery">
-              All photographs <span className="arr">→</span>
+              All photographs <span className="arr">â†’</span>
             </Link>
           </p>
         </div>
@@ -271,7 +271,7 @@ export default function HomePage() {
                 <span className="stars" aria-label={r.label}>
                   {r.half ? (
                     <>
-                      ★★★★<span style={{ opacity: 0.4 }}>★</span>
+                      â˜…â˜…â˜…â˜…<span style={{ opacity: 0.4 }}>â˜…</span>
                     </>
                   ) : (
                     r.stars
@@ -286,7 +286,7 @@ export default function HomePage() {
           </div>
           <p className="ph-note">
             <Link className="link-more" href="/reviews">
-              Reviews, sourced &amp; linked <span className="arr">→</span>
+              Reviews, sourced &amp; linked <span className="arr">â†’</span>
             </Link>
           </p>
         </div>
@@ -305,16 +305,16 @@ export default function HomePage() {
               <em>We&apos;ll hold the palace.</em>
             </h2>
             <p className="muted" style={{ marginTop: "1rem" }}>
-              Advance ₹75,000 · catering from ₹400 a plate · policies in plain words on the pricing page.
+              Advance â‚¹75,000 Â· catering from â‚¹400 a plate Â· policies in plain words on the pricing page.
             </p>
             <div className="hero-cta" style={{ justifyContent: "center", animation: "none", opacity: 1 }}>
-              <a className="btn btn--brass" href="tel:+919160374743">
-                <span>Reserve a date</span>
-                <span className="arr">→</span>
+              <a className="btn btn--brass" href={waLink()}>
+                <span>Chat on WhatsApp</span>
+                <span className="arr">â†’</span>
               </a>
               <Link className="btn btn--paper" href="/pricing">
                 <span>Pricing &amp; policies</span>
-                <span className="arr">→</span>
+                <span className="arr">â†’</span>
               </Link>
             </div>
           </div>

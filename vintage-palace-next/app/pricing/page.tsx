@@ -1,13 +1,13 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { PageHero, BreadcrumbJsonLd } from "@/components/PageHero";
-import { IMG, PLANS, POLICIES, FAQS, SITE } from "@/lib/venue";
+import { IMG, PLANS, POLICIES, FAQS, SITE, waLink } from "@/lib/venue";
 
 export const metadata = {
   title: "Pricing & Policies",
   description:
-    "The published numbers for The Vintage Palace: catering from ₹400 a plate (veg) / ₹500 (non-veg), 18% GST on F&B, five rooms at about ₹1,000 a night, ₹75,000 booking advance — plus the full house-policy sheet.",
+    "The published numbers for The Vintage Palace: catering from â‚¹400 a plate (veg) / â‚¹500 (non-veg), 18% GST on F&B, five rooms at about â‚¹1,000 a night, â‚¹75,000 booking advance â€” plus the full house-policy sheet.",
   alternates: { canonical: "/pricing" },
-  openGraph: { title: "Pricing & Policies — The Vintage Palace, Hyderabad", images: [IMG["dining-night"]] },
+  openGraph: { title: "Pricing & Policies â€” The Vintage Palace, Hyderabad", images: [IMG["dining-night"]] },
 };
 
 export default function PricingPage() {
@@ -23,7 +23,7 @@ export default function PricingPage() {
             Every published number, <em>plainly put.</em>
           </>
         }
-        lead="These figures come straight from the venue's published listings — the same baseline the events desk quotes on the phone. Seasonal rentals are confirmed per date."
+        lead="These figures come straight from the venue's published listings â€” the same baseline the events desk quotes on the phone. Seasonal rentals are confirmed per date."
       />
 
       {/* PRICES */}
@@ -44,9 +44,9 @@ export default function PricingPage() {
                   <span>{p.unit}</span>
                 </div>
                 <p className="plan-alt">
-                  {p.amt === "₹400" ? (
+                  {p.amt === "â‚¹400" ? (
                     <>
-                      Non-veg menus from <b>₹500</b> a plate
+                      Non-veg menus from <b>â‚¹500</b> a plate
                     </>
                   ) : p.alt[0]}
                 </p>
@@ -59,7 +59,7 @@ export default function PricingPage() {
             ))}
           </div>
           <p className="ph-note rv">
-            Booking advance: <b style={{ color: "var(--ink)" }}>₹75,000</b> at confirmation. Every figure on this page is
+            Booking advance: <b style={{ color: "var(--ink)" }}>â‚¹75,000</b> at confirmation. Every figure on this page is
             published on the venue&apos;s{" "}
             <a
               href="https://weddingz.in/hyderabad/the-vintage-palace-karwan/"
@@ -78,7 +78,7 @@ export default function PricingPage() {
             >
               Wedding.net
             </a>{" "}
-            listings — nothing on this page is a mock-up.
+            listings â€” nothing on this page is a mock-up.
           </p>
         </div>
       </section>
@@ -134,16 +134,16 @@ export default function PricingPage() {
               One call, one sheet, <em>no surprises</em>
             </h2>
             <p className="muted" style={{ marginTop: "1rem" }}>
-              Share your date and headcount — the events desk returns a single itemised estimate the same day.
+              Share your date and headcount â€” the events desk returns a single itemised estimate the same day.
             </p>
             <div className="hero-cta" style={{ justifyContent: "center", animation: "none", opacity: 1 }}>
-              <a className="btn btn--brass" href={`tel:${SITE.phoneDial}`}>
-                <span>Call {SITE.phone}</span>
-                <span className="arr">→</span>
+              <a className="btn btn--brass" href={waLink()}>
+                <span>Chat on WhatsApp</span>
+                <span className="arr">â†’</span>
               </a>
               <Link className="btn btn--paper" href="/contact">
                 <span>Plan a site visit</span>
-                <span className="arr">→</span>
+                <span className="arr">â†’</span>
               </Link>
             </div>
           </div>
