@@ -1,6 +1,6 @@
 /* ============================================================
-   THE VINTAGE PALACE — motion engine
-   Reveal-on-scroll · parallax · counters · header · gallery
+   THE VINTAGE PALACE â€” motion engine
+   Reveal-on-scroll Â· parallax Â· counters Â· header Â· gallery
    ============================================================ */
 (function () {
   "use strict";
@@ -27,13 +27,29 @@
   /* ---------- mobile drawer ---------- */
   const burger = document.querySelector(".burger");
   if (burger && head) {
-    burger.addEventListener("click", () => {
+    // backdrop
+    const backdrop = document.createElement("div");
+    backdrop.className = "drawer-backdrop";
+    head.appendChild(backdrop);
+    const closeMenu = () => {
+      head.classList.remove("menu-open");
+      burger.setAttribute("aria-expanded", "false");
+      document.documentElement.style.overflow = "";
+    };
+    const toggleMenu = () => {
       const open = head.classList.toggle("menu-open");
       burger.setAttribute("aria-expanded", String(open));
       document.documentElement.style.overflow = open ? "hidden" : "";
+    };
+    burger.addEventListener("click", toggleMenu);
+    backdrop.addEventListener("click", closeMenu);
+    document.querySelectorAll(".drawer a").forEach((a, i) => {
+      a.style.setProperty("--i", i);
+      a.addEventListener("click", closeMenu);
     });
-    // mark drawer links with staggered index
-    document.querySelectorAll(".drawer a").forEach((a, i) => a.style.setProperty("--i", i));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && head.classList.contains("menu-open")) closeMenu();
+    });
   }
 
   /* ---------- split headings into masked lines ---------- */

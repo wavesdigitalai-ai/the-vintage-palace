@@ -32,7 +32,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
   font: 400 1.0625rem/1.7 var(--f-body);
@@ -210,7 +210,7 @@ section { position: relative; }
 .stats b { font-family: var(--f-display); display: block; font-size: clamp(2.4rem, 1.7rem + 2.6vw, 3.8rem); font-weight: 500; line-height: 0.95; letter-spacing: -0.015em; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum", "lnum"; }
 .stats span { display: block; margin-top: 0.6rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--muted); }
 
-.marquee { overflow: hidden; background: var(--dark); color: var(--paper); border-block: 1px solid rgba(250,246,239,0.1); padding: 1rem 0; }
+.marquee { overflow: hidden; position: relative; background: var(--dark); color: var(--paper); border-block: 1px solid rgba(250,246,239,0.1); padding: 1rem 0; }
 .marquee-track { display: flex; gap: 3rem; width: max-content; animation: slide 50s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-track span { display: inline-flex; align-items: center; gap: 3rem; font-family: var(--f-display); font-size: 1rem; letter-spacing: 0.24em; text-transform: uppercase; white-space: nowrap; color: var(--gold-2); }
